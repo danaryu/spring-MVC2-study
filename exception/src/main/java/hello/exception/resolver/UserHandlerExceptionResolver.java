@@ -22,7 +22,6 @@ public class UserHandlerExceptionResolver implements HandlerExceptionResolver {
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
 
         try {
-
             if (ex instanceof UserException) {
                 log.info("UserException resolver to 400");
                 String acceptHeader = request.getHeader("accept");
@@ -43,10 +42,10 @@ public class UserHandlerExceptionResolver implements HandlerExceptionResolver {
                     return new ModelAndView("error/500");
                 }
             }
-
         } catch (IOException e) {
             log.debug("resolver ex", e);
         }
+
         return null;
     }
 }
